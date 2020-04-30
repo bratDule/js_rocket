@@ -38,3 +38,27 @@ var fullname = function (firstname, secondname) {
 if (true){
 	alert('male');
 };
+
+if ('male' == 'male'){
+	alert ('male');
+}
+
+var number1 = 10;
+var number2 = 100;
+
+if (number1 > number2) {
+	alert ('Zaista!');
+}	else {
+	alert ('Paznja! Pricate gluposti');
+}
+
+var name1 = 'Dule';
+var name2 = 'Marko';
+
+if (name1 == 'Dule') {
+	alert('true 1');
+} else if (name2 == 'Dule') {
+	alert ('true 2');
+} else {
+	alert ('false');
+}
