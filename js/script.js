@@ -1,8 +1,8 @@
 var doCoolStuff = function () {
-	var currentClassName = document.get
-	ElementById('cool').className;
+	var currentClassName = document.getElementById('cool').className;
 
-	if (currentClassName == 'cool')	{
+	// changing class name
+	if (currentClassName == 'cool') {
 		document.getElementById('cool').className = 'cool red';
 	} else {
 		document.getElementById('cool').className = 'cool';
