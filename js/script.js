@@ -1,43 +1,49 @@
-var doCoolStuff = function () {
-	var currentClassName = document.getElementById('cool').className;
+var timer = null;
+var countdownNumber = 10;
 
-	// changing class name
-	if (currentClassName == 'cool') {
-		document.getElementById('cool').className = 'cool red';
-	} else {
-		document.getElementById('cool').className = 'cool';
-	}
+var changeState = function (state) {
+	document.body.className = 'body-state'+state;
+	clearInterval(timer);
+	countdownNumber = 10;
+	document.getElementById('countdown').innerHTML = countdownNumber;
+
+	// countdown
+	if (state == 2) {
+		timer = setInterval(function () {
+			countdownNumber = countdownNumber-1;
+			document.getElementById('countdown').innerHTML = countdownNumber;
+			
+			if (countdownNumber > 4 && countdownNumber <= 7) {
+				// be nervous
+				document.getElementById('nervous').className = 'nervous show';
+			} else{
+				document.getElementById('nervous').className = 'nervous';
+			}
+
+			if (countdownNumber > 1 && countdownNumber <= 4) {
+				// can't wait
+				document.getElementById('cant-wait').className = 'cant-wait show';
+			} else {
+				document.getElementById('cant-wait').className = 'cant-wait';
+			}
+
+			if (countdownNumber <= 0) {
+				changeState(3);
+			};
+		}, 500);
+	} else if (state == 3) {
+		var success = setTimeout(function () {
+				var randomNumber = Math.round(Math.random()*10);
+
+				console.log('randomNumber:', randomNumber)
+
+				// succes
+				if (randomNumber > 2) {
+					changeState(4);
+
+				} else {
+					changeState(5); // oh no!
+				}
+		}, 2000);
+	};
 }
-
-var sayMyName = function (name) {
-	alert('My name is: '+name);
-}
-var car = {
-	make: 'VW',
-	type: 'Polo',
-	color: 'blue',
-	isTurnedOn: false,
-	numberOfWheels: 4,
-	seats: [
-		'seat 1',
-		'seat 2',
-		'seat 3',
-		'seat 4'
-	],
-	turnOn: function () {
-		this.isTurnedOn = true;
-	},
-	fly: function () {
-		alert('fly');
-	},
-	switchCar: function (isOn) {
-		console.log('turn car '+isOn);
-		if (isOn == true) {
-			this.isTurnedOn = true;
-		} else {
-			this.isTurnedOn = false;
-		}
-	}
-};
-
-console.log('hello there friends!');
